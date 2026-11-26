@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$pagetitle$</title>
+<meta name="description" content="$description$">
+<meta property="og:title" content="$pagetitle$">
+<meta property="og:description" content="$description$">
+<meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="bar"><div class="in"><a class="home" href="/">Kavach</a><a class="pdf" href="$pdf$" download>Download PDF</a></div></header>
+<main>
+<h1>$doctitle$</h1>
+<p class="status noprint">You are reading the web version. A <a href="$pdf$">PDF version</a> is also available.</p>
+$if(toc)$<nav id="TOC"><details><summary>Contents</summary>
+$table-of-contents$
+</details></nav>$endif$
+$body$
+</main>
+<footer>Part of <a href="https://kavach.bio/">kavach.bio</a>. Draft built with AI assistance; sources are cited in the document. Comments welcome.</footer>
+</body>
+</html>
