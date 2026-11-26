@@ -57,3 +57,8 @@ li{margin:.2rem 0}
 .fig figcaption p{margin:.15rem 0}
 .fig-note{color:var(--fg)}
 @media print{:root{--s1:#257de0;--s2:#f47230;--ink:#55554f;--card:#fff;--inv:#fff}.fig{border-color:#ddd;padding:.6rem .8rem}}
+
+.fig-table{margin-top:.6rem;font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.fig-table summary{cursor:pointer;color:var(--accent);font-weight:600}
+.fig-table .table-wrap{margin:.5rem 0 0}
+@media print{.fig-table{display:block}.fig-table summary{display:none}}

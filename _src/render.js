@@ -5,7 +5,7 @@ const srv=http.createServer((q,r)=>{let p=decodeURIComponent(q.url.split('?')[0]
  if(!fs.existsSync(f)){r.writeHead(404);return r.end('404')}r.writeHead(200,{'content-type':types[path.extname(f)]||'application/octet-stream'});fs.createReadStream(f).pipe(r)}).listen(8765);
 (async()=>{const b=await chromium.launch();const pg=await b.newPage();
  const docs=[['white-paper','india-respirator-stockpile-white-paper-v0.1.pdf','A Respiratory Protection Stockpile for India · Draft v0.1'],['fit-panel-protocol','india-respirator-fit-panel-protocol-v0.1.pdf','India Respirator Fit Panel · Draft protocol v0.1']];
- for(const [d,pdf,label] of docs){await pg.goto(`http://localhost:8765/${d}/`,{waitUntil:'networkidle'});await pg.emulateMedia({media:'print'});
+ for(const [d,pdf,label] of docs){await pg.goto(`http://localhost:8765/${d}/`,{waitUntil:'networkidle'});await pg.emulateMedia({media:'print'});await pg.evaluate(()=>document.querySelectorAll('details.fig-table').forEach(d=>d.open=true));
   await pg.pdf({path:`${root}/${d}/${pdf}`,format:'A4',printBackground:true,displayHeaderFooter:true,headerTemplate:'<span></span>',
    footerTemplate:`<div style="font:8px system-ui,sans-serif;color:#666;width:100%;padding:0 16mm;display:flex;justify-content:space-between"><span>${label} · kavach.bio/${d}/</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
    margin:{top:'16mm',bottom:'18mm',left:'16mm',right:'16mm'}});await pg.emulateMedia({media:'screen'});}

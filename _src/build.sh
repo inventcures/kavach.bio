@@ -19,6 +19,7 @@ pandoc fp.md -f $F -s --template template.html --toc --toc-depth=2 \
   -V pdf="india-respirator-fit-panel-protocol-v0.1.pdf" \
   -V doctitle="Draft study protocol: India Respirator Fit Panel (IRFP)" -o $S/fit-panel-protocol/index.html
 for pair in "white-paper wp.md" "fit-panel-protocol fp.md"; do set -- $pair; f=$S/$1/index.html
-  python3 -c "import sys,re,json;p=sys.argv[1];t=open(p).read();figs=json.load(open(sys.argv[2]+'.figs.json'));t=re.sub(r'<p>FIGSLOT(.+?)FIGSLOT</p>',lambda m:figs[m.group(1)],t);t=re.sub(r'(<table.*?</table>)',r'<div class=\"table-wrap\">\1</div>',t,flags=re.S);t=re.sub(r'<a href=\"(https?://[^\"]+)\"',r'<a href=\"\1\" rel=\"noopener\"',t);open(p,'w').write(t)" $f $2
+  python3 postproc.py $f $2 style.css
 done
 echo built
+V=$(md5sum style.css | cut -c1-8); sed -i -E "s#href=\"/style.css(\?v=[a-f0-9]+)?\"#href=\"/style.css?v=$V\"#" $S/index.html
