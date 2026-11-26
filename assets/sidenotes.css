@@ -34,7 +34,7 @@
   transition: background-color 0.3s;
 }
 .sn-wide .sn-note.sn-margin.sn-flash { background-color: rgba(231, 76, 60, 0.12); }
-.sn-js .page__content .footnotes { display: none; }
+
 
 /* Narrow screens: tap a number to open the note under the paragraph. */
 .sn-note.sn-inline {
@@ -56,3 +56,5 @@
 .page__content .footnotes a{word-break:break-word}
 .reversefootnote{text-decoration:none;margin-left:.3em}
 @media print{#main{transform:none!important}.sn-note{display:none!important}.sn-js .page__content .footnotes{display:block!important}.reversefootnote{display:none}}
+.page__content .footnotes .refs-h{border-top:0;margin-top:1.5rem}
+.page__content .footnotes li:target{background:var(--accent-bg)}

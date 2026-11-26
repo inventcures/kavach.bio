@@ -25,7 +25,7 @@ def cite(m):
     return f'<sup id="fnref:{n}" role="doc-noteref"><a href="#fn:{n}" class="footnote" rel="footnote">{n}</a></sup>'
 t = re.sub(r'\s?\((' + A + r'(?:\s*[;,]\s*' + A + r')*)\)', cite, t, flags=re.S)
 items = ''.join(f'<li id="fn:{i}" role="doc-endnote"><p>{x} <a href="#fnref:{i}" class="reversefootnote" role="doc-backlink">&#8617;</a></p></li>' for i, x in enumerate(notes, 1))
-t = t.replace('REFLIST', f'<div class="footnotes" role="doc-endnotes"><h2 class="refs-h">References</h2><ol>{items}</ol></div>' if notes else '')
+t = t.replace('REFLIST', f'<div class="footnotes" role="doc-endnotes"><h2 class="refs-h" id="references">References</h2><p class="refs-intro">All {len(notes)} sources cited in the text, numbered to match the margin notes.</p><ol>{items}</ol></div>' if notes else '')
 print(p_name := p, 'refs:', len(notes))
 import glob, os
 for f in ['style.css'] + ['assets/' + os.path.basename(x) for x in glob.glob('/home/claude/site/assets/*')]:

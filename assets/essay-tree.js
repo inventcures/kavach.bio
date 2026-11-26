@@ -16,7 +16,7 @@
     return s;
   }
   var heads = Array.prototype.filter.call(content.querySelectorAll(rail.getAttribute('data-heads') || 'h2, h3'), function (h) {
-    if (h.closest('.footnotes, .sn-note, .sn, .sn-rail, .sn-toc-rail, nav, figure, aside') || !h.textContent.trim()) return false;
+    if (h.closest('.sn-note, .sn, .sn-rail, .sn-toc-rail, nav, figure, aside') || !h.textContent.trim()) return false;
     if (!h.id) h.id = slug(h.textContent);
     h.classList.add('et-target');
     return true;
