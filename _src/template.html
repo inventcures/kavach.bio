@@ -8,19 +8,42 @@
 <meta property="og:title" content="$pagetitle$">
 <meta property="og:description" content="$description$">
 <meta property="og:type" content="article">
+<script>(function(){var t=null;try{t=localStorage.getItem('st-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/assets/theme.css">
+<link rel="stylesheet" href="/assets/sidenotes.css">
+<link rel="stylesheet" href="/assets/essay-tree.css">
 </head>
 <body>
+<button type="button" class="theme-toggle" aria-label="Switch theme"><svg class="theme-toggle-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.7 14.6A8.5 8.5 0 0 1 9.4 3.3a8.5 8.5 0 1 0 11.3 11.3z"/></svg><svg class="theme-toggle-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg></button>
 <header class="bar"><div class="in"><a class="home" href="/">Kavach</a><a class="pdf" href="$pdf$" download>Download PDF</a></div></header>
-<main>
+<main id="main">
+<div class="page__content">
 <h1>$doctitle$</h1>
-<p class="status noprint">You are reading the web version. A <a href="$pdf$">PDF version</a> is also available.</p>
-$if(toc)$<nav id="TOC"><details><summary>Contents</summary>
-$table-of-contents$
-</details></nav>$endif$
+<p class="status noprint">You are reading the web version. A <a href="$pdf$">PDF version</a> is also available. Sources are numbered and shown in the margin; on a phone, tap a number to open its source.</p>
 $body$
+REFLIST
+</div>
 </main>
-<footer>Part of <a href="https://kavach.bio/">kavach.bio</a>. Draft built with AI assistance; sources are cited in the document. Comments welcome.</footer>
+<footer class="page__footer">Part of <a href="https://kavach.bio/">kavach.bio</a>. A working draft written with AI assistance; sources are cited throughout. Comments welcome.</footer>
+<aside class="et-rail" id="et-rail" aria-label="Outline and reading progress" hidden data-content=".page__content" data-heads="h2, h3" data-footer=".page__footer" data-wpm="200">
+  <p class="et-title">$doctitle$</p>
+  <p class="et-label">Tree</p>
+  <nav aria-label="Sections"><ol class="et-tree"></ol></nav>
+  <div class="et-meter" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="et-bar" aria-hidden="true"><span class="et-fill"></span></span><span class="et-pct">0%</span></div>
+  <p class="et-read"></p>
+  <p class="et-label et-share-label">Share</p>
+  <ul class="et-tree et-share" data-url="https://kavach.bio$canon$" data-title="$doctitle$">
+    <li><a href="https://x.com/intent/post?url=https%3A%2F%2Fkavach.bio$canon$" target="_blank" rel="noopener noreferrer">X.com</a></li>
+    <li><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkavach.bio$canon$" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    <li><a href="mailto:?subject=$doctitle$&amp;body=https%3A%2F%2Fkavach.bio$canon$">Email</a></li>
+    <li><a href="#" data-copy="url">Copy URL</a></li>
+    <li><a href="$pdf$" download>Download PDF</a></li>
+  </ul>
+</aside>
+<script src="/assets/theme.js"></script>
+<script src="/assets/sidenotes.js" defer></script>
+<script src="/assets/essay-tree.js" defer></script>
 </body>
 </html>

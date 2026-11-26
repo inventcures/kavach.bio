@@ -15,6 +15,20 @@ for key in [k for k in COLLAPSE if k in figs]:
     assert n == 1, key
 t = re.sub(r'<p>FIGSLOT(.+?)FIGSLOT</p>', lambda m: put(m.group(1)), t)
 t = re.sub(r'<a href="(https?://[^"]+)"', r'<a href="\1" rel="noopener"', t)
-v = hashlib.md5(open(cssfile, 'rb').read()).hexdigest()[:8]
-t = t.replace('href="/style.css"', f'href="/style.css?v={v}"')
+# Parenthetical citations made only of links -> numbered margin references.
+A = r'<a href="https?://[^"]+" rel="noopener">(?:(?!</a>).)+?</a>'
+notes = []
+def cite(m):
+    inner = m.group(1)
+    notes.append(inner)
+    n = len(notes)
+    return f'<sup id="fnref:{n}" role="doc-noteref"><a href="#fn:{n}" class="footnote" rel="footnote">{n}</a></sup>'
+t = re.sub(r'\s?\((' + A + r'(?:\s*[;,]\s*' + A + r')*)\)', cite, t, flags=re.S)
+items = ''.join(f'<li id="fn:{i}" role="doc-endnote"><p>{x} <a href="#fnref:{i}" class="reversefootnote" role="doc-backlink">&#8617;</a></p></li>' for i, x in enumerate(notes, 1))
+t = t.replace('REFLIST', f'<div class="footnotes" role="doc-endnotes"><h2 class="refs-h">References</h2><ol>{items}</ol></div>' if notes else '')
+print(p_name := p, 'refs:', len(notes))
+import glob, os
+for f in ['style.css'] + ['assets/' + os.path.basename(x) for x in glob.glob('/home/claude/site/assets/*')]:
+    v = hashlib.md5(open('/home/claude/site/' + f, 'rb').read()).hexdigest()[:8]
+    t = t.replace(f'"/{f}"', f'"/{f}?v={v}"')
 open(p, 'w').write(t)

@@ -1,0 +1,58 @@
+/* Margin sidenotes built from kramdown footnotes (see /assets/js/sidenotes.js).
+   Without JS, the footnotes simply stay as a numbered list at the end. */
+.page__content sup[id^="fnref"] {
+  line-height: 0;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.5em;
+  font-size: 0.75em;
+}
+.page__content sup[id^="fnref"] a.footnote {
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 0.1em;
+}
+.sn-note {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  opacity: 0.82;
+}
+.sn-note .sn-num {
+  font-weight: 700;
+  margin-right: 0.35em;
+}
+.sn-note a { word-break: break-word; }
+.sn-note p { margin: 0; display: inline; }
+
+/* Wide screens: notes sit in the right margin beside the text that cites them. */
+.sn-wide #main { position: relative; }
+.sn-wide .sn-note.sn-margin {
+  position: absolute;
+  width: var(--sn-width, 260px);
+  border-left: 2px solid rgba(127, 127, 127, 0.35);
+  padding-left: 0.7em;
+  transition: background-color 0.3s;
+}
+.sn-wide .sn-note.sn-margin.sn-flash { background-color: rgba(231, 76, 60, 0.12); }
+.sn-js .page__content .footnotes { display: none; }
+
+/* Narrow screens: tap a number to open the note under the paragraph. */
+.sn-note.sn-inline {
+  display: block;
+  margin: 0.4em 0 1em;
+  padding: 0.6em 0.8em;
+  border-left: 2px solid rgba(231, 76, 60, 0.6);
+  background: rgba(127, 127, 127, 0.08);
+  border-radius: 4px;
+}
+
+
+/* kavach.bio additions */
+.sn-note{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--fg)}
+.sn-note a{color:var(--accent)}
+.page__content .footnotes{font:13px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin-top:3rem;border-top:1px solid var(--line)}
+.page__content .footnotes ol{padding-left:1.6rem}
+.page__content .footnotes li{margin:.25rem 0}
+.page__content .footnotes a{word-break:break-word}
+.reversefootnote{text-decoration:none;margin-left:.3em}
+@media print{#main{transform:none!important}.sn-note{display:none!important}.sn-js .page__content .footnotes{display:block!important}.reversefootnote{display:none}}
