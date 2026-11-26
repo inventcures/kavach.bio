@@ -39,3 +39,21 @@ li{margin:.2rem 0}
  footer{border:0;padding:1rem 0 0}
 }
 @page{size:A4;margin:18mm 16mm}
+/* figures */
+:root{--s1:#257de0;--s2:#f47230;--ink:#55554f;--card:#ffffff;--inv:#fff}
+@media (prefers-color-scheme:dark){:root{--s1:#338ced;--s2:#e76624;--ink:#b5b3ac;--card:#1c1d1a;--inv:#141513}}
+.fig{margin:2rem 0;padding:1rem 1rem .8rem;border:1px solid var(--line);border-radius:10px;background:var(--card);break-inside:avoid}
+.fig-title{font:700 1.05rem/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0 0 .3rem}
+.fig-sub{font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--muted);margin:0 0 .6rem}
+.fig-panel{font:600 13.5px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:.8rem 0 .1rem}
+.fig-legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0 0 .4rem}
+.fig-legend span{display:inline-flex;align-items:center;gap:.35rem}
+.sw{display:inline-block;width:14px;height:12px;border-radius:2px;background:var(--c)}
+.sw.hatch{background:repeating-linear-gradient(45deg,var(--c) 0 2.5px,transparent 2.5px 5px);border:1.5px solid var(--c)}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart .t{fill:var(--fg)}.chart .m{fill:var(--muted)}.chart .inv{fill:var(--inv)}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.fig figcaption{font:12.5px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--muted);margin-top:.5rem;border-top:1px solid var(--line);padding-top:.45rem}
+.fig figcaption p{margin:.15rem 0}
+.fig-note{color:var(--fg)}
+@media print{:root{--s1:#257de0;--s2:#f47230;--ink:#55554f;--card:#fff;--inv:#fff}.fig{border-color:#ddd;padding:.6rem .8rem}}

@@ -4,35 +4,100 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kavach</title>
-<meta name="description" content="Kavach is an effort to prepare India for the next epidemic, starting with respiratory protection for health workers.">
+<meta name="description" content="Kavach (shield) is an effort to help India prepare for the next epidemic, starting with respirators for health workers.">
 <meta property="og:title" content="Kavach">
-<meta property="og:description" content="An effort to prepare India for the next epidemic, starting with respiratory protection for health workers.">
+<meta property="og:description" content="An effort to help India prepare for the next epidemic, starting with respirators for health workers.">
+<meta property="og:type" content="website">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
 <style>
-.lead{font-size:1.12rem}
-.items{list-style:none;padding:0;margin:2rem 0}
-.items li{border:1px solid var(--line);border-radius:8px;padding:.9rem 1rem;margin:.8rem 0}
-.items a.t{font:600 1.05rem/1.3 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none}
-.items p{margin:.3rem 0 0;color:var(--muted);font-size:.95rem}
-.tag{font:12px/1 system-ui,sans-serif;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.15rem .35rem;margin-left:.4rem;vertical-align:2px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:60rem;margin:0 auto;padding:0 16px}
+.hero{padding:4.5rem 0 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4rem);margin:0;letter-spacing:-.02em;line-height:1}
+.hero .hi{font-size:1.1rem;color:var(--muted);margin:.5rem 0 1.4rem}
+.hero p.lead{font:1.2rem/1.6 Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;max-width:36rem;margin:0}
+.shield{width:min(170px,30vw);height:auto}
+.kicker{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 .8rem}
+section{padding:2.4rem 0;border-top:1px solid var(--line)}
+section h2{border:0;margin:0 0 1.2rem;padding:0;font-size:1.5rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem .9rem}
+.stat b{display:block;font-size:2.1rem;line-height:1.1;color:var(--accent);margin-bottom:.4rem}
+.stat p{margin:0;font-size:.95rem;line-height:1.5}
+.stat small{display:block;color:var(--muted);font-size:.75rem;margin-top:.6rem}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem;text-decoration:none;color:var(--fg);transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .top{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
+.card svg{width:40px;height:40px;flex:none}
+.card h3{margin:0;font-size:1.12rem;line-height:1.3}
+.card p{margin:0 0 .8rem;color:var(--muted);font-size:.95rem;line-height:1.5}
+.card .go{font-weight:600;color:var(--accent);font-size:.92rem}
+.tag{font-size:.7rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.1rem .35rem;margin-left:auto;white-space:nowrap}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem;font-size:.92rem;line-height:1.45}
+.steps li b{display:block;margin-bottom:.2rem}
+.steps li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--accent);color:var(--bg);font-weight:700;font-size:.85rem;margin-bottom:.5rem}
+.foot{color:var(--muted);font-size:.88rem;line-height:1.6;padding:2rem 0 3rem;border-top:1px solid var(--line)}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:2.5rem}.shield{order:-1;width:90px}.stats,.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.steps{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<main>
+<div class="wrap">
+<header class="hero">
+<div>
+<p class="kicker">Epidemic preparedness for India</p>
 <h1>Kavach</h1>
-<p class="lead"><em>Kavach</em> means "shield" in Hindi. This is a small effort to help prepare India for the next epidemic, so that in the unlikely event one comes, the country is ready and alert. We are starting with respiratory protection for health workers.</p>
-<ul class="items">
-<li><a class="t" href="/white-paper/">A respiratory protection stockpile for India</a><span class="tag">draft</span>
-<p>White paper: why India needs a respirator reserve, what other countries learned, and a pilot design for Kerala.</p></li>
-<li><a class="t" href="https://planner.kavach.bio/">India stockpile planner</a><span class="tag">prototype</span>
-<p>Pick a state and an outbreak scenario to see how many respirators are needed and what they cost.</p></li>
-<li><a class="t" href="/fit-panel-protocol/">India Respirator Fit Panel: study protocol</a><span class="tag">draft</span>
-<p>A proposed study of Indian facial dimensions and respirator fit among health workers.</p></li>
-<li><a class="t" href="https://drill.kavach.bio/">Mask drill</a><span class="tag">prototype</span>
-<p>A phone game for practising how to choose, fit, check and remove a mask.</p></li>
-</ul>
-<p style="color:var(--muted);font-size:.95rem">These are early drafts, built with AI assistance and open about it. Sources are cited in each document. Comments and corrections are welcome.</p>
-</main>
+<p class="hi">कवच · "shield"</p>
+<p class="lead">An effort to help India prepare for the next epidemic. The chance of one in any given year is small. If it comes, we want health workers to have respirators that fit, stock that has not expired, and a country that is ready to act.</p>
+</div>
+<svg class="shield" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 8 13v17c0 15 10 26 24 30 14-4 24-15 24-30V13Z" fill="var(--accent)"/><path d="M32 14 18 19v11c0 9 6 16 14 19 8-3 14-10 14-19V19Z" fill="var(--accent-bg)"/></svg>
+</header>
+
+<section>
+<h2>Why respirators, and why now</h2>
+<div class="stats">
+<div class="stat"><b>3 masks</b><p>During the 2018 Nipah outbreak in Kozhikode, field staff were at first told to wear three ordinary masks at once, because few N95s were available.</p><small>Deccan Chronicle, May 2018</small></div>
+<div class="stat"><b>None</b><p>India has no national respirator stockpile, and none has been formally proposed. Calls for one have come only from think tanks.</p><small>Carnegie India 2020; ORF 2023</small></div>
+<div class="stat"><b>≈3 crore</b><p>Health and frontline workers India counted in its COVID-19 vaccine priority list: the people a reserve should protect first.</p><small>BOOM, Dec 2020</small></div>
+</div>
+</section>
+
+<section>
+<h2>The work so far</h2>
+<div class="cards">
+<a class="card" href="/white-paper/">
+<div class="top"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="4" width="24" height="32" rx="3" fill="none" stroke="var(--accent)" stroke-width="2.5"/><path d="M13 13h14M13 19h14M13 25h9" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg><h3>A respiratory protection stockpile for India</h3><span class="tag">Draft</span></div>
+<p>White paper. What other countries learned (stockpiles fail when no one pays to replace them), a proposed design for India, and a 12-month pilot in Kerala.</p>
+<span class="go">Read the paper →</span></a>
+<a class="card" href="https://planner.kavach.bio/">
+<div class="top"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 33V20M15 33V12M23 33V17M31 33V7" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><h3>India stockpile planner</h3><span class="tag">Prototype</span></div>
+<p>Pick a state and an outbreak scenario. See how many respirators it would take and what disposable N95s and reusable elastomerics would cost.</p>
+<span class="go">Open the planner →</span></a>
+<a class="card" href="/fit-panel-protocol/">
+<div class="top"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="18" rx="10" ry="13" fill="none" stroke="var(--accent)" stroke-width="2.5"/><path d="M11 22c3 6 15 6 18 0" fill="none" stroke="var(--accent)" stroke-width="2.5"/><path d="M4 36h32M8 33v6M32 33v6" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg><h3>India Respirator Fit Panel</h3><span class="tag">Draft protocol</span></div>
+<p>A proposed study measuring the faces of about 3,000 Indian health workers, to find which masks fit them and build an Indian fit panel.</p>
+<span class="go">Read the protocol →</span></a>
+<a class="card" href="https://drill.kavach.bio/">
+<div class="top"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="11" y="3" width="18" height="34" rx="4" fill="none" stroke="var(--accent)" stroke-width="2.5"/><path d="M16 17l3 3 6-6" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Mask drill</h3><span class="tag">Prototype</span></div>
+<p>A short phone game for practising how to choose, fit, check and take off a mask, for health workers and emergency teams.</p>
+<span class="go">Play the drill →</span></a>
+</div>
+</section>
+
+<section>
+<h2>The idea in four steps</h2>
+<ol class="steps">
+<li><b>Protect workers first</b>About 1 crore health workers, then about 2 crore frontline workers.</li>
+<li><b>Masks that fit</b>Test which respirators fit Indian faces before buying at scale.</li>
+<li><b>Stock that stays fresh</b>Rotate it through routine hospital use, with one owner and its own budget.</li>
+<li><b>Start small</b>A 12-month pilot with about 5,000 health workers in Kerala.</li>
+</ol>
+</section>
+
+<footer class="foot">These are early working drafts, written with AI assistance and open about it. Every document cites its sources, and estimates are marked as estimates. Comments and corrections are welcome.</footer>
+</div>
 </body>
 </html>
